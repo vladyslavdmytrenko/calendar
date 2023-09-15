@@ -3,4 +3,5 @@ export enum EMOJI_SYMBOLS {
   CLOSE = '❌',
   DELETE = '🗑️',
   CHECK_MARK = '✔️',
+  HOLIDAY = '📅',
 }

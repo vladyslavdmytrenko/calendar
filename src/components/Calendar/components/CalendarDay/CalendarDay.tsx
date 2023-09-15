@@ -1,4 +1,4 @@
-import { DragEvent, FC, useState } from 'react';
+import { DragEvent, FC, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { CalendarDayContainer } from './CalendarDay.styled.tsx';
@@ -14,24 +14,33 @@ import {
 import { useAppDispatch } from '@/redux/store.ts';
 
 import { getEnMonthName, isLastDayMonth, isSameMonth } from '@utils/date.ts';
+import { CalendarHoliday } from '@components/Calendar/components/CalendarHoliday';
 
 interface ICalendarDay {
-  date: Date;
+  dayDate: Date;
   selectedDate: Date;
 }
 
-export const CalendarDay: FC<ICalendarDay> = ({ date, selectedDate }) => {
+export const CalendarDay: FC<ICalendarDay> = ({ dayDate, selectedDate }) => {
   const dispatch = useAppDispatch();
-  const timestamp = date.getTime();
+  const timestamp = dayDate.getTime();
   const tasks = useSelector(selectCalendarTasks(timestamp));
   const dragTask = useSelector(selectDragCard);
 
   const [isHovering, setIsHovering] = useState(false);
   const [isCreatingNewTask, setIsCreatingNewTask] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
-  const day = date.getDate();
-  const isSelectedMonth = isSameMonth(date, selectedDate);
-  const isLastOrFirstDayMonth = isLastDayMonth(date) || date.getDate() === 1;
+  const day = dayDate.getDate();
+  const isSelectedMonth = isSameMonth(dayDate, selectedDate);
+  const isLastOrFirstDayMonth =
+    isLastDayMonth(dayDate) || dayDate.getDate() === 1;
+
+  useEffect(() => {
+    if (isCreatingNewTask && ref.current) {
+      ref.current?.scrollTo({ top: ref.current.scrollHeight });
+    }
+  }, [ref, isCreatingNewTask]);
 
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -73,13 +82,16 @@ export const CalendarDay: FC<ICalendarDay> = ({ date, selectedDate }) => {
       onMouseOut={handleMouseOut}
       onDrop={handlerDrop}
       onDragOver={handlerDragOver}
+      ref={ref}
     >
       <div>
-        {day} {isLastOrFirstDayMonth && getEnMonthName(date)}
+        {day} {isLastOrFirstDayMonth && getEnMonthName(dayDate)}
       </div>
 
+      <CalendarHoliday timestamp={timestamp} />
+
       {tasks.map(task => (
-        <CalendarTask key={task.id} task={task} date={date} />
+        <CalendarTask key={task.id} task={task} date={dayDate} />
       ))}
 
       {isHovering && !isCreatingNewTask && (

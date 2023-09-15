@@ -27,3 +27,15 @@ export const isSameMonth = (date1: Date, date2: Date = new Date()) => {
 export const getEnMonthName = (date: Date) => {
   return date.toLocaleString(LOCAL.US, { month: 'short' });
 };
+
+export const getDateSting = (date: Date | string = new Date()) => {
+  let baseDate = date;
+
+  if (typeof baseDate === 'string') {
+    baseDate = new Date(baseDate);
+  }
+
+  return `${baseDate.getFullYear()}-${
+    baseDate.getMonth() + 1
+  }-${baseDate.getDate()}`;
+};

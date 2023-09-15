@@ -11,15 +11,16 @@ import {
   generateDateListByRange,
   getDateRangeByDate,
 } from '@utils/calendar.ts';
+import { getDateSting } from '@utils/date.ts';
 
 import { WEEK_DAYS } from '@/constants';
 
 interface ICalendar {}
 
 export const Calendar: FC<ICalendar> = () => {
-  const [selectedDate] = useState(new Date());
+  const [selectedDate] = useState(new Date(getDateSting()));
 
-  const selectedRange = getDateRangeByDate(selectedDate);
+  const selectedRange = getDateRangeByDate(new Date(selectedDate));
   const listDate = generateDateListByRange(selectedRange);
 
   return (
@@ -36,7 +37,7 @@ export const Calendar: FC<ICalendar> = () => {
         {listDate.map(({ date }) => (
           <CalendarDay
             key={date.toString()}
-            date={date}
+            dayDate={date}
             selectedDate={selectedDate}
           />
         ))}

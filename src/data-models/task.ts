@@ -16,5 +16,5 @@ export interface TaskAction<T> {
 }
 
 export interface TaskList {
-  [key: number]: Task[];
+  [key: string]: Task[];
 }

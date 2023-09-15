@@ -27,8 +27,7 @@ export const CalendarTask: FC<ICalendarTask> = ({ date, task }) => {
   const [isDragOver, setIsDragOver] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
-  const handlerDragStart = (task: Task) => (e: DragEvent) => {
-    console.log('drag start', e, task);
+  const handlerDragStart = (task: Task) => () => {
     dispatch(
       calendarTaskActions.setDragCard({
         timestamp: date.getTime(),
