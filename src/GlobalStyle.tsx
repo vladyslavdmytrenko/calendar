@@ -87,6 +87,9 @@ export const globalStyle = css`
     padding: 0;
     border: 0;
     vertical-align: baseline;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+      'Segoe UI Symbol';
   }
 
   body {
@@ -98,5 +101,19 @@ export const globalStyle = css`
   ol,
   ul {
     list-style: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${theme.colors.dark6};
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${theme.colors.primaryText};
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }
 `;

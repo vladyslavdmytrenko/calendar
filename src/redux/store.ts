@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 
 import { countryAPI } from './api/countryAPI.ts';
 
-import calendarReducer from '@/redux/reducers/calendarSlice.ts';
+import calendarReducer from '@/redux/reducers/CalendarTaskSlice.ts';
 
 const APIS = [countryAPI];
 

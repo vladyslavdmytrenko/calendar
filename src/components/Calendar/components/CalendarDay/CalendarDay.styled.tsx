@@ -1,10 +1,23 @@
 import styled from '@emotion/styled';
 
-export const CalendarDayContainer = styled.div`
+interface ICalendarDayContainer {
+  isSelectedMonth: boolean;
+}
+export const CalendarDayContainer = styled.div<ICalendarDayContainer>`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: ${({ theme }) => theme.borderRadius(2)};
+  min-height: 160px;
+  max-height: 160px;
+  overflow-y: auto;
+  padding: ${({ theme }) => theme.spacing(2)};
+  gap: ${({ theme }) => theme.spacing(1)};
   color: ${({ theme }) => theme.colors.primaryText};
-  background-color: ${({ theme }) => theme.colors.dark1};
+  background-color: ${({ isSelectedMonth, theme }) =>
+    isSelectedMonth ? theme.colors.dark2 : theme.colors.dark7};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.dark2};
+    background-color: ${({ theme }) => theme.colors.dark3};
   }
 `;

@@ -27,8 +27,11 @@
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
-      "@pages/*": ["src/pages/*"],
-      "@constant/*": ["src/constant/*"]
+      "@constant/*": ["src/constant/*"],
+      "@data-models/*": ["src/data-models/*"],
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"],
+
     }
   },
   "include": ["src"],
