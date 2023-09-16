@@ -125,11 +125,11 @@ export const calendarTaskSlice = createSlice({
           action.payload.action === CALENDAR_FILTER_ACTION.REMOVE &&
           typeof action.payload.data === 'object'
         ) {
-          if ('id' in action.payload.data) {
-            state.filters.labels = state.filters.labels.filter(
-              label => label.id !== action.payload.data.id
-            );
-          }
+          state.filters.labels = state.filters.labels.filter(label => {
+            const filterTaskLabel: TaskLabel = action.payload.data as TaskLabel;
+
+            return label.id !== filterTaskLabel.id;
+          });
         }
       }
     },
