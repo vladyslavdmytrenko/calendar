@@ -1,6 +1,7 @@
 import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
 
 import {
+  CalendarButtonContainer,
   CalendarFilterContainer,
   CalendarHeaderContainer,
   CalendarHeaderText,
@@ -14,10 +15,20 @@ import {
   CALENDAR_FILTER_ACTION,
   CALENDAR_FILTER_TYPES,
 } from '@data-models/enums/calendar.enum.ts';
+import { Button } from '@components/Button';
+import { Icon } from '@components/Icon';
+import { EMOJI_SYMBOLS } from '@data-models/enums/emojis.enum.ts';
+import { BUTTON_TYPES } from '@data-models/enums/button.enum.ts';
 
-interface ICalendarHeader {}
+interface ICalendarHeader {
+  onDownloadImage: () => Promise<void>;
+  onExportData: () => void;
+}
 
-export const CalendarHeader: FC<ICalendarHeader> = () => {
+export const CalendarHeader: FC<ICalendarHeader> = ({
+  onDownloadImage,
+  onExportData,
+}) => {
   const dispatch = useAppDispatch();
   const [titleFilterValue, setTitleFilterValue] = useState('');
   const refTimeoutId = useRef<NodeJS.Timeout>();
@@ -55,6 +66,20 @@ export const CalendarHeader: FC<ICalendarHeader> = () => {
         <CalendarHeaderText>Filter by task title </CalendarHeaderText>
 
         <StyledInput onChange={handleChange} />
+      </CalendarFilterContainer>
+
+      <CalendarFilterContainer>
+        <CalendarHeaderText>Actions</CalendarHeaderText>
+
+        <CalendarButtonContainer>
+          <Button variant={BUTTON_TYPES.ICON} onClick={onDownloadImage}>
+            <Icon icon={EMOJI_SYMBOLS.CAMERA} />
+          </Button>
+
+          <Button variant={BUTTON_TYPES.ICON} onClick={onExportData}>
+            <Icon icon={EMOJI_SYMBOLS.SAVE} />
+          </Button>
+        </CalendarButtonContainer>
       </CalendarFilterContainer>
     </CalendarHeaderContainer>
   );

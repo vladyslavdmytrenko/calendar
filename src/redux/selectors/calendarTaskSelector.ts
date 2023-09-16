@@ -32,6 +32,11 @@ export const selectCalendarTasks = ({
       );
   });
 
+export const selectCalendarAllTask = createSelector(
+  selectCalendarState,
+  (state: CalendarTaskSliceState) => state.tasks
+);
+
 export const selectCalendarLabels = createSelector(
   selectCalendarState,
   (state: CalendarTaskSliceState) => state.labels

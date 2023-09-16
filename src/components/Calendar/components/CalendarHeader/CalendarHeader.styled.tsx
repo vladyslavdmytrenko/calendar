@@ -17,3 +17,9 @@ export const CalendarFilterContainer = styled.div`
   width: 150px;
   gap: ${({ theme }) => theme.spacing(2)};
 `;
+
+export const CalendarButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: ${({ theme }) => theme.spacing(2)};
+`;

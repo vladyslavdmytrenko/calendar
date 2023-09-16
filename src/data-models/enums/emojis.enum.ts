@@ -5,4 +5,6 @@ export enum EMOJI_SYMBOLS {
   CHECK_MARK = '✔️',
   HOLIDAY = '📅',
   PLUS = '➕',
+  CAMERA = '📷',
+  SAVE = '💾',
 }

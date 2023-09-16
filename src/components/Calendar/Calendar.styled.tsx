@@ -10,3 +10,5 @@ export const CalendarDayName = styled.div`
   padding: ${({ theme }) => theme.spacing(1)};
   margin-block: ${({ theme }) => theme.spacing(2)};
 `;
+
+export const CalendarContainer = styled.div``;
