@@ -32,3 +32,26 @@ export const CalendarTaskHeader = styled.div`
 export const CalendarTaskTitle = styled.div`
   color: ${({ theme }) => theme.colors.primaryText};
 `;
+
+export const CalendarTaskDataContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(2)};
+`;
+
+export const CalendarTaskLabelContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${({ theme }) => theme.spacing(2)};
+`;
+
+interface ICalendarTaskLabel {
+  color: string;
+}
+export const CalendarTaskLabel = styled.div<ICalendarTaskLabel>`
+  width: 40px;
+  height: 8px;
+  background-color: ${({ color }) => color};
+  gap: ${({ theme }) => theme.spacing(2)};
+  border-radius: ${({ theme }) => theme.borderRadius(2)};
+`;

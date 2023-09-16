@@ -1,0 +1,10 @@
+export enum CALENDAR_FILTER_TYPES {
+  TITLE,
+  LABELS,
+}
+
+export enum CALENDAR_FILTER_ACTION {
+  ADD,
+  REMOVE,
+  RESET,
+}

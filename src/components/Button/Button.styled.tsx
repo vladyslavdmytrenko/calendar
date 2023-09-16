@@ -40,6 +40,16 @@ export const StyledButton = styled.button<IStyledButton>`
     }
   }};
 
+  min-width: ${({ theme, variant }) => {
+    switch (variant) {
+      case BUTTON_TYPES.ICON:
+        return theme.spacing(7);
+
+      default:
+        return '100%';
+    }
+  }};
+
   padding: ${({ theme, variant }) => {
     switch (variant) {
       case BUTTON_TYPES.ICON:

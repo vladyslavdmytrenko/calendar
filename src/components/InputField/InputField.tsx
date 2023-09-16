@@ -8,23 +8,32 @@ import {
 } from '@components/InputField/InputField.styled.tsx';
 
 interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  label?: string;
+  isShowError?: boolean;
 }
 
-export const InputField: FC<InputFieldProps> = ({ label, ...props }) => {
+export const InputField: FC<InputFieldProps> = ({
+  label,
+  isShowError,
+  ...props
+}) => {
   const { name } = props;
   const { register, getFieldState } = useFormContext();
   const { isTouched, error } = getFieldState(name || '');
 
   return (
     <>
-      <Label>
-        {label}
+      {label && (
+        <Label>
+          {label} <StyledInput {...register(name || '')} {...props} />
+        </Label>
+      )}
 
-        <StyledInput {...register(name || '')} />
-      </Label>
+      {!label && <StyledInput {...register(name || '')} {...props} />}
 
-      {isTouched && error && <ErrorMessage>{error.message}</ErrorMessage>}
+      {isShowError && isTouched && error && (
+        <ErrorMessage>{error.message}</ErrorMessage>
+      )}
     </>
   );
 };

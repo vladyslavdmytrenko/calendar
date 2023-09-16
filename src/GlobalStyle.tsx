@@ -117,3 +117,14 @@ export const globalStyle = css`
     background: #555;
   }
 `;
+
+export const styleInputColor = css`
+  -webkit-appearance: none;
+  border: none;
+  background-color: transparent;
+  overflow: hidden;
+  outline: none;
+  cursor: inherit;
+  padding: 0;
+  border-radius: ${theme.spacing(2)};
+`;

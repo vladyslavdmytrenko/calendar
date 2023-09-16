@@ -13,7 +13,7 @@ export const StyledInput = styled.input`
   color: ${({ theme }) => theme.colors.primaryText};
   border: none;
   border-radius: ${({ theme }) => theme.borderRadius(2)};
-  line-height: 20px;
+  line-height: 14px;
   outline: none;
   transition-duration: 85ms;
   padding: ${({ theme }) => theme.spacing(2)};

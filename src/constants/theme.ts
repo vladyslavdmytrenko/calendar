@@ -17,5 +17,6 @@ export const theme = {
   borderRadius: (value: number) => `${1.5 * value}px`,
   zIndexes: {
     inlineEditor: 1,
+    modal: 1000,
   },
 };

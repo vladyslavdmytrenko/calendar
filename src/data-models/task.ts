@@ -1,7 +1,7 @@
 export interface TaskLabel {
   id: string;
-  text: string;
-  label: string;
+  title: string;
+  color: string;
 }
 export interface Task {
   id: string;

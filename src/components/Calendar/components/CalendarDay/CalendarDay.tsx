@@ -8,6 +8,7 @@ import { Button } from '@components/Button';
 
 import { calendarTaskActions } from '@/redux/reducers/CalendarTaskSlice.ts';
 import {
+  selectCalendarFilters,
   selectCalendarTasks,
   selectDragCard,
 } from '@/redux/selectors/calendarTaskSelector.ts';
@@ -24,7 +25,8 @@ interface ICalendarDay {
 export const CalendarDay: FC<ICalendarDay> = ({ dayDate, selectedDate }) => {
   const dispatch = useAppDispatch();
   const timestamp = dayDate.getTime();
-  const tasks = useSelector(selectCalendarTasks(timestamp));
+  const filters = useSelector(selectCalendarFilters);
+  const tasks = useSelector(selectCalendarTasks({ timestamp, filters }));
   const dragTask = useSelector(selectDragCard);
 
   const [isHovering, setIsHovering] = useState(false);

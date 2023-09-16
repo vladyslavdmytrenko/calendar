@@ -2,7 +2,10 @@ import { DragEvent, FC, useState } from 'react';
 
 import {
   CalendarTaskContainer,
+  CalendarTaskDataContainer,
   CalendarTaskHeader,
+  CalendarTaskLabel,
+  CalendarTaskLabelContainer,
   CalendarTaskTitle,
 } from '@components/Calendar/components/CalendarTask/CalnedarTask.styled.tsx';
 import { Button } from '@components/Button';
@@ -70,7 +73,15 @@ export const CalendarTask: FC<ICalendarTask> = ({ date, task }) => {
           onDrop={handlerDrop(task)}
         >
           <CalendarTaskHeader>
-            <CalendarTaskTitle>{task.title}</CalendarTaskTitle>
+            <CalendarTaskDataContainer>
+              <CalendarTaskTitle>{task.title}</CalendarTaskTitle>
+
+              <CalendarTaskLabelContainer>
+                {task.labels?.map(label => (
+                  <CalendarTaskLabel color={label.color} />
+                ))}
+              </CalendarTaskLabelContainer>
+            </CalendarTaskDataContainer>
 
             <Button variant={BUTTON_TYPES.ICON} onClick={handleEditClick}>
               <Icon icon={EMOJI_SYMBOLS.EDIT} />
